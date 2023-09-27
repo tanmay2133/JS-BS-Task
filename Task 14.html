@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: maroon;
+            color: white;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: none;
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: maroon;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .register-button {
+            margin-top: 20px;
+            /* Add margin to separate it from the container */
+            text-align: center;
+        }
+
+        .alert {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <input type="text" id="name" required minlength="1" maxlength="20" size="50" />
+                    <div class="alert" id="nameAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>
+                    <input type="text" id="email" required minlength="1" maxlength="20" size="50" />
+                    <div class="alert" id="emailAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>
+                    <input type="password" id="pass" minlength="50" required />
+                    <div class="alert" id="passAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Re-Password:</th>
+                <td>
+                    <input type="password" id="repass" minlength="50" required />
+                    <div class="alert" id="repassAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Phone Number:</th>
+                <td>
+                    <input type="number" id="phoneNumber" min="10000000000" max="9999999999" />
+                    <div class="alert" id="phoneNumberAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td>
+                    <input type="checkbox" id="male" checked />
+                    <label for="male">Male</label>
+                    <input type="checkbox" id="female" />
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <th>Language:</th>
+                <td>
+                    <select id="language">
+                        <option value="">--Choose your Language--</option>
+                        <option value="English">America</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Gujarati">Gujarati</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Bengali">Bengali</option>
+                    </select>
+                    <div class="alert" id="languageAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>Zipcode:</th>
+                <td>
+                    <input type="number" id="zipcode" min="100000" max="999999" />
+                    <div class="alert" id="zipcodeAlert"></div>
+                </td>
+            </tr>
+            <tr>
+                <th>About:</th>
+                <td>
+                    <input type="text" id="about" required minlength="1" maxlength="20" size="50" />
+                    <div class="alert" id="aboutAlert"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        const form = document.querySelector('.container');
+        const inputs = form.querySelectorAll('input, select');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            inputs.forEach(function (input) {
+                const alert = document.getElementById(input.id + 'Alert');
+                if (input.value.trim() === '') {
+                    alert.textContent = 'Poor';
+                    isValid = false;
+                } else {
+                    alert.textContent = '';
+                }
+            });
+
+            if (isValid) {
+                // Perform form submission or other actions
+                console.log('Form submitted successfully');
+            }
+        });
+    </script>
+</body>
+
+</html>
