@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .train {
+            width: 100px;
+            height: 50px;
+            background-color: #0077b6;
+            position: relative;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-name: moveTrain;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: calc(100% - 100px);
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0077b6;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005691;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p style="color: #0077b6;">Click the following buttons to handle animation</p>
+        <div class="train"></div>
+        <br>
+        <button id="startButton">Start</button>
+        <button id="stopButton">Stop</button>
+    </div>
+
+    <script>
+        const train = document.querySelector(".train");
+        const startButton = document.getElementById("startButton");
+        const stopButton = document.getElementById("stopButton");
+
+        let animationInterval;
+
+        startButton.addEventListener("click", () => {
+            train.style.animationPlayState = "running";
+            animationInterval = setInterval(() => {
+                if (parseFloat(getComputedStyle(train).left) >= (window.innerWidth - 100)) {
+                    train.style.left = "0";
+                }
+            }, 100);
+        });
+
+        stopButton.addEventListener("click", () => {
+            train.style.animationPlayState = "paused";
+            clearInterval(animationInterval);
+        });
+    </script>
+</body>
+</html>
