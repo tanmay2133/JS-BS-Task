@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 10</title>
+</head>
+<body>
+    <form>
+        <input type="button" onclick="demo" value="show date"><p id="demo"></p>
+        <input type="button" onclick="demo" value="show time"><p id="demo"></p>
+    </form>
+    <script>
+        const d = new Date();
+        document.getElementById("demo").innerHTML = d;
+    </script>
+</body>
+</html>
